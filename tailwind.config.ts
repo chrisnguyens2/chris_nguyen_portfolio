@@ -6,7 +6,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["var(--font-sans)", ...fontFamily.sans],
+        sans: ['ui-sans-serif', 'system-ui', ...fontFamily.sans],
       },
     },
   },

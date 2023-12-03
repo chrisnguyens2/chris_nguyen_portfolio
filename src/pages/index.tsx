@@ -1,9 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
-import gitHubIcon from "../../public/github.svg";
-import linkedInIcon from "../../public/linkedin.svg";
-import instagramIcon from "../../public/instagram.svg";
 
 export default function Home() {
   return (
@@ -23,18 +20,18 @@ export default function Home() {
           </ul>
         </nav>
 
-        <div className="flex flex-col items-center justify-center">
-          <header className="py-3">
+        <div className="flex flex-col items-center justify-center px-28">
+          <header>
             <h1 className="text-4xl font-bold text-slate-200">Chris Nguyen</h1>
             <h2>Full Stack Software Developer</h2>
-            <p>
+            <p className="mt-6">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </p>
-            <ul className="mt-5 flex gap-4">
+            <ul className="mt-8 flex gap-4">
               <li>
                 <Link target="_blank" href={"https://github.com/chrisnguyens2"}>
-                  <Image src={gitHubIcon} alt="GitHub" height={28} width={28} />
+                  <Image src={"/github.svg"} alt="GitHub" height={28} width={28} />
                 </Link>
               </li>
               <li>
@@ -43,7 +40,7 @@ export default function Home() {
                   href={"https://www.linkedin.com/in/chrisnguyens2"}
                 >
                   <Image
-                    src={linkedInIcon}
+                    src={"/linkedin.svg"}
                     alt="LinkedIn"
                     height={28}
                     width={28}
@@ -53,10 +50,10 @@ export default function Home() {
               <li>
                 <Link
                   target="_blank"
-                  href={"https://www.linkedin.com/in/chrisnguyens2/"}
+                  href={"https://www.instagram.com/chris.nguyens/"}
                 >
                   <Image
-                    src={instagramIcon}
+                    src={"/instagram.svg"}
                     alt="Instagram"
                     height={28}
                     width={28}
@@ -67,25 +64,48 @@ export default function Home() {
           </header>
 
           <section>
-            <h2>ABOUT</h2>
-            <p>
+            <h2>About</h2>
+            <p className="pt-12">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Congue
               eu consequat ac felis donec et odio pellentesque. At consectetur
               lorem donec massa sapien faucibus. Ultrices sagittis orci a
               scelerisque purus semper eget. Id consectetur purus ut faucibus
-              pulvinar elementum integer enim neque.{" "}
+              pulvinar elementum integer enim neque.
             </p>
           </section>
 
           <section>
-            <h2>EXPERIENCE</h2>
+            <h2>Experience</h2>
             <ol>
               <li className="flex mb-10 gap-16">
-                <div className="uppercase text-xs">2020 - Present</div>
-                <div>
+                <div className="uppercase text-xs w-1/6">2020 - Present</div>
+                <div className="w-5/6">
+                  <h3 className="font-bold">
+                    <div>
+                      <a className="hover:text-orange-300" href="https://www.hcss.com/products/gps-tracking-devices/" target="_blank">HCSS</a>
+                    </div>
+                  </h3>
                   <h3>Software Developer II</h3>
-                  <h3>HCSS</h3>
+                  <p className="mt-2 text-sm">
+                    Congue eu consequat ac felis donec et odio pellentesque. At
+                    consectetur lorem donec massa sapien faucibus. Ultrices
+                    sagittis orci a scelerisque purus semper eget. Id
+                    consectetur purus ut faucibus pulvinar elementum integer
+                    enim neque.
+                  </p>
+                  <ul className="flex mt-2 gap-2">
+                    {["React", "TypeScript", ".NET", "C#", "Azure", "SQL"].map(t => {
+                      return(<TechnologyIcon key={t} techName={t}/>)
+                    })}
+                  </ul>
+                </div>
+              </li>
+              <li className="flex mb-10 gap-16">
+              <div className="uppercase text-xs w-1/6">2020 - Present</div>
+                <div className="w-5/6">
+                <h3 className="font-bold"><a href="https://www.hcss.com/products/gps-tracking-devices/">HCSS</a></h3>
+                <h3>Software Developer II</h3>
                   <p>
                     Congue eu consequat ac felis donec et odio pellentesque. At
                     consectetur lorem donec massa sapien faucibus. Ultrices
@@ -97,8 +117,42 @@ export default function Home() {
               </li>
             </ol>
           </section>
+
+          <section>
+            <h2>Projects</h2>
+            <p className="pt-12">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Congue
+              eu consequat ac felis donec et odio pellentesque. At consectetur
+              lorem donec massa sapien faucibus. Ultrices sagittis orci a
+              scelerisque purus semper eget. Id consectetur purus ut faucibus
+              pulvinar elementum integer enim neque.{" "}
+            </p>
+          </section>
+
+          <section>
+            <h2>Blog</h2>
+            <p className="pt-12">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Congue
+              eu consequat ac felis donec et odio pellentesque. At consectetur
+              lorem donec massa sapien faucibus. Ultrices sagittis orci a
+              scelerisque purus semper eget. Id consectetur purus ut faucibus
+              pulvinar elementum integer enim neque.{" "}
+            </p>
+          </section>
         </div>
       </main>
     </>
+  );
+}
+
+const TechnologyIcon = (prop:{techName: string}) => {
+  return (
+    <li>
+      <div className="bg-red-800/80 text-orange-200 font-semibold rounded-full items-center leading-5 text-xs px-3 py-1">
+        {prop.techName}
+      </div>
+    </li>    
   );
 }
