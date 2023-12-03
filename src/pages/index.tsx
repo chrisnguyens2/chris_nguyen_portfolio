@@ -1,6 +1,8 @@
 import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
+import { ProjectItem } from "~/components/projectItem";
+import { ExperienceRecord } from "~/components/experienceRecord";
 
 export default function Home() {
   return (
@@ -131,7 +133,7 @@ export default function Home() {
           <section>
             <h2>Projects</h2>
             <ul className="pt-10">
-              <Project
+              <ProjectItem
                 imageUrl={"/twitter_clone_page.png"}
                 websiteUrl={"https://twitter-clone-khaki-six.vercel.app/"}
                 name={"Twitter Clone"}
@@ -140,7 +142,7 @@ export default function Home() {
                 }
                 technologiesUsed={["Next.js","Tailwind CSS","Prisma","tRPC"]}
               />
-              <Project
+              <ProjectItem
                 imageUrl={"/chris_nguyen_portfolio.png"}
                 websiteUrl={"https://chris-nguyen-portfolio.vercel.app/"}
                 name={"Chris Nguyen Portfolio"}
@@ -208,92 +210,3 @@ export default function Home() {
     </>
   );
 }
-
-const TechnologyIcon = (props: { techName: string }) => {
-  return (
-    <li>
-      <div className="items-center rounded-full bg-red-800/80 px-3 py-1 text-xs font-semibold leading-5 text-orange-200">
-        {props.techName}
-      </div>
-    </li>
-  );
-};
-
-const ExperienceRecord = (props: {
-  startDate: string;
-  endDate: string;
-  websiteUrl: string;
-  company: string;
-  positionTitle: string;
-  positionDesc: string;
-  technologiesUsed: string[];
-}) => {
-  return (
-    <li className="mb-10 flex gap-10">
-      <div className="w-1/6 text-xs uppercase">
-        {props.startDate} - {props.endDate}
-      </div>
-      <div className="w-5/6">
-        <h3 className="font-bold">
-          <div>
-            <a
-              className="hover:text-orange-300"
-              href={props.websiteUrl}
-              target="_blank"
-            >
-              {props.company}
-            </a>
-          </div>
-        </h3>
-        <h3>{props.positionTitle}</h3>
-        <p className="mt-2 text-sm">{props.positionDesc}</p>
-        <ul className="mt-2 flex gap-2">
-          {props.technologiesUsed.map((t) => {
-            return <TechnologyIcon key={t} techName={t} />;
-          })}
-        </ul>
-      </div>
-    </li>
-  );
-};
-
-const Project = (props: {
-  imageUrl: string;
-  websiteUrl: string;
-  name: string;
-  description: string;
-  technologiesUsed: string[];
-}) => {
-  return (
-    <li className="mb-10 flex gap-10">
-      <div className="w-1/6">
-        <Image
-          className="rounded-md border-slate-400/50 border-2"
-          src={props.imageUrl}
-          alt={`image of ${props.name}`}
-          width={200}
-          height={60}
-        />
-      </div>
-      <div className="w-5/6">
-        <h3 className="font-bold">
-          <div>
-            <a
-              className="hover:text-orange-300"
-              href={props.websiteUrl}
-              target="_blank"
-            >
-              {props.name}
-            </a>
-          </div>
-        </h3>
-        <p className="mt-2 text-sm">{props.description}</p>
-        <ul className="mt-2 flex gap-2">
-          {props.technologiesUsed.map((t) => {
-            return <TechnologyIcon key={t} techName={t} />;
-          })}
-        </ul>
-      </div>
-    </li>
-  );
-};
